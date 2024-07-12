@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery/core/utils/constent.dart';
-import 'package:grocery/core/utils/widget/CustomContainer.dart';
 import 'package:grocery/core/utils/widget/Custom_Button.dart';
 import 'package:grocery/core/utils/widget/Custom_TextFeild.dart';
 import 'package:grocery/core/utils/widget/loginor.dart';
 
-class Singin extends StatelessWidget {
+class Singup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +22,7 @@ class Singin extends StatelessWidget {
                 children: [
                   Text(
                     textAlign: TextAlign.left,
-                    'Welcome\nBack!',
+                    'Create\nan account',
                     style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
@@ -44,6 +42,14 @@ class Singin extends StatelessWidget {
                 height: 20,
               ),
               const CustomTextFeild(
+                Title: 'Phone Number',
+                icon: Icons.phone,
+                password: false,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const CustomTextFeild(
                 Title: 'Password',
                 icon: Icons.lock,
                 password: true,
@@ -51,23 +57,17 @@ class Singin extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Forgot Password?',
-                    style: GoogleFonts.urbanist(
-                        textStyle:
-                            const TextStyle(color: maincolor, fontSize: 18)),
-                  ),
-                ],
+              const CustomTextFeild(
+                Title: 'Confirm Password',
+                icon: Icons.lock,
+                password: true,
               ),
+              const SizedBox(
+                height: 50,
+              ),
+              CustomButton(Title: 'Create Account', onTap: () {}),
               const SizedBox(
                 height: 20,
-              ),
-              CustomButton(Title: 'Login', onTap: () {}),
-              const SizedBox(
-                height: 100,
               ),
               Row(
                 children: [
@@ -107,7 +107,7 @@ class Singin extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Don\’t have an account?',
+                    'I Already Have an Account',
                     style: GoogleFonts.urbanist(
                         textStyle: TextStyle(fontSize: 18, shadows: [
                       BoxShadow(
@@ -123,10 +123,10 @@ class Singin extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, 'Singup');
+                      Navigator.pushNamed(context, 'Singin');
                     },
                     child: Text(
-                      'Register Now',
+                      'Login',
                       style: GoogleFonts.urbanist(
                           textStyle: TextStyle(
                               fontWeight: FontWeight.bold,

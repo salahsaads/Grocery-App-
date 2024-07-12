@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocery/Features/Login/presation/view/singin.dart';
+import 'package:grocery/Features/SingUp/presation/view/SingUp.dart';
 import 'package:grocery/Features/welcom/presation/view/welcome_screen.dart';
 
 void main() {
@@ -12,6 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        'Singup': (context) => Singup(),
+        'Singin': (context) => Singin()
+      },
       home: WelcomeScreen(),
     );
   }
