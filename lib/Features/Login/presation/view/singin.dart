@@ -65,7 +65,11 @@ class Singin extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              CustomButton(Title: 'Login', onTap: () {}),
+              CustomButton(
+                  Title: 'Login',
+                  onTap: () {
+                    Navigator.pushNamed(context, 'Homescreen');
+                  }),
               const SizedBox(
                 height: 100,
               ),
