@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery/Features/Custom_Prodect/presention/veiw_model/widget/CustomItem.dart';
+import 'package:grocery/Features/prodect_details/presation/view/prodect_details.dart';
 
 import 'package:grocery/core/utils/widget/CustomTextfieldSearch.dart';
 
@@ -120,7 +121,14 @@ class Custom_Prodect extends StatelessWidget {
                   ),
                   itemCount: 100,
                   itemBuilder: (context, index) {
-                    return const CustomItem();
+                    return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProdectDetails()));
+                        },
+                        child: const CustomItem());
                   },
                 ),
               ),
