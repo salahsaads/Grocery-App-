@@ -6,6 +6,8 @@ import 'package:grocery/Features/Home/prestion/view/widget/CustomImage.dart';
 import 'package:grocery/core/utils/constent.dart';
 import 'package:grocery/core/utils/widget/CustomTextfieldSearch.dart';
 
+import '../../../Custom_Prodect/presention/view/Custom_Prodect.dart';
+
 class Homescreen extends StatelessWidget {
   const Homescreen({super.key});
 
@@ -85,7 +87,14 @@ class Homescreen extends StatelessWidget {
                           mainAxisSpacing: 5),
                       itemCount: 100,
                       itemBuilder: (context, index) {
-                        return CustomItem();
+                        return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Custom_Prodect()));
+                            },
+                            child: CustomItem());
                       }),
                 )
               ],
