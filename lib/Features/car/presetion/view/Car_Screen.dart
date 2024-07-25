@@ -6,6 +6,7 @@ import 'package:grocery/core/utils/widget/Custom_Button.dart';
 import 'package:grocery/core/utils/widget/Custom_TextFeild.dart';
 
 import '../../../Custom_Prodect/presention/veiw_model/widget/CustomItem.dart';
+import '../../../Proceed to Payment/prestion/view/Proceed_to_Payment.dart';
 
 class CarScreen extends StatefulWidget {
   const CarScreen({super.key});
@@ -66,7 +67,14 @@ class _CarScreenState extends State<CarScreen> {
             SizedBox(
               height: 10,
             ),
-            CustomButton(Title: 'Buying', onTap: () {}),
+            CustomButton(
+                Title: 'Buying',
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProceedToPayment()));
+                }),
             SizedBox(
               height: 10,
             )
