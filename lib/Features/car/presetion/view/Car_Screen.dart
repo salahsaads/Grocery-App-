@@ -39,46 +39,50 @@ class _CarScreenState extends State<CarScreen> {
             ],
           ),
         ),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 70,
-            ),
-            Expanded(
-              child: GridView.builder(
-                  padding: const EdgeInsets.only(top: 5),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: 10,
-                      childAspectRatio: 10 / 14,
-                      crossAxisCount: 3,
-                      mainAxisSpacing: 5),
-                  itemCount: 100,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Custom_Prodect()));
-                        },
-                        child: Item());
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: GridView.builder(
+                    padding: const EdgeInsets.only(top: 5),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 10 / 14,
+                        crossAxisCount:
+                            (MediaQuery.of(context).size.width / 140).round(),
+                        mainAxisSpacing: 5),
+                    itemCount: 100,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Custom_Prodect()));
+                          },
+                          child: Item());
+                    }),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              CustomButton(
+                  Title: 'Buying',
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProceedToPayment()));
                   }),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CustomButton(
-                Title: 'Buying',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProceedToPayment()));
-                }),
-            SizedBox(
-              height: 10,
-            )
-          ],
+              SizedBox(
+                height: 10,
+              )
+            ],
+          ),
         ),
       ),
     );

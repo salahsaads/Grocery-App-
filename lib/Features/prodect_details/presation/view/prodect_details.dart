@@ -25,7 +25,7 @@ class _ProdectDetailsState extends State<ProdectDetails> {
     super.initState();
     Future.delayed(Duration.zero, () {
       setState(() {
-        w = 300;
+        w = (MediaQuery.of(context).size.height * .6);
         x = 30; // Set the target width for the animation
       });
     });
@@ -53,242 +53,246 @@ class _ProdectDetailsState extends State<ProdectDetails> {
               ],
             ),
           ),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 70,
-              ),
-              GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Custom_arrow_back()),
-              SizedBox(
-                height: x,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: AnimatedContainer(
-                  child: Image.asset('assets/image 5.png'),
-                  width: double.infinity,
-                  height: w,
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(16),
-                          topRight: Radius.circular(16))),
-                  duration: Duration(seconds: 2),
-                  curve: Curves.easeInOutCubicEmphasized,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 70,
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Biryani Masala 50g (Aachi)',
-                          style: GoogleFonts.inter(
-                              textStyle: const TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w400)),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              '₹19 / 50 g',
-                              style: GoogleFonts.inter(
-                                  textStyle: const TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w400)),
-                            ),
-                            const SizedBox(
-                              width: 135,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 140,
-                    ),
-                    const Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.bookmark_outline,
-                          size: 30,
-                        ),
-                        SizedBox(
-                          height: 30,
-                        )
-                      ],
-                    )
-                  ],
+                GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Custom_arrow_back()),
+                SizedBox(
+                  height: x,
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  children: [
-                    Container(
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: AnimatedContainer(
+                    child: Image.asset('assets/image 5.png'),
+                    width: double.infinity,
+                    height: w,
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(16),
+                            topRight: Radius.circular(16))),
+                    duration: Duration(seconds: 2),
+                    curve: Curves.easeInOutCubicEmphasized,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Row(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          CircleAvatar(
-                            backgroundColor: Color.fromARGB(255, 126, 205, 229),
-                            radius: 15.5,
-                            child: Text(
-                              '-',
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.white),
-                            ),
-                          ),
                           Text(
-                            '1',
-                            style: TextStyle(fontSize: 16, color: Colors.white),
+                            'Biryani Masala 50g (Aachi)',
+                            style: GoogleFonts.inter(
+                                textStyle: const TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.w400)),
                           ),
-                          CircleAvatar(
-                            child: Text(
-                              '+',
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.white),
-                            ),
-                            backgroundColor: Color.fromARGB(255, 126, 205, 229),
-                            radius: 15.5,
+                          const SizedBox(
+                            height: 10,
                           ),
+                          Row(
+                            children: [
+                              Text(
+                                '₹19 / 50 g',
+                                style: GoogleFonts.inter(
+                                    textStyle: const TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w400)),
+                              ),
+                              const SizedBox(
+                                width: 135,
+                              ),
+                            ],
+                          )
                         ],
                       ),
-                      width: 104,
-                      height: 54,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(
-                                  0, 3), // changes position of shadow
-                            ),
-                          ],
-                          color: maincolor,
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
-                    Spacer(),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Spacer(),
+                      const Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.bookmark_outline,
+                            size: 30,
+                          ),
+                          SizedBox(
+                            height: 30,
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Row(
+                    children: [
+                      Container(
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Text(
-                              'Add to cart',
-                              style: GoogleFonts.montserrat(
-                                textStyle: TextStyle(
-                                  color: maincolor,
-                                  fontSize: 18,
-                                ),
+                            CircleAvatar(
+                              backgroundColor:
+                                  Color.fromARGB(255, 126, 205, 229),
+                              radius: 15.5,
+                              child: Text(
+                                '-',
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.white),
                               ),
                             ),
                             Text(
-                              '₹19',
-                              style: GoogleFonts.inter(
-                                  textStyle: const TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w400)),
+                              '1',
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.white),
+                            ),
+                            CircleAvatar(
+                              child: Text(
+                                '+',
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.white),
+                              ),
+                              backgroundColor:
+                                  Color.fromARGB(255, 126, 205, 229),
+                              radius: 15.5,
                             ),
                           ],
                         ),
+                        width: 104,
+                        height: 54,
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                    0, 3), // changes position of shadow
+                              ),
+                            ],
+                            color: maincolor,
+                            borderRadius: BorderRadius.circular(10)),
                       ),
-                      width: 275,
-                      height: 54,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(
-                                  0, 3), // changes position of shadow
-                            ),
-                          ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                    )
-                  ],
+                      Spacer(),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Add to cart',
+                                style: GoogleFonts.montserrat(
+                                  textStyle: TextStyle(
+                                    color: maincolor,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '₹19',
+                                style: GoogleFonts.inter(
+                                    textStyle: const TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w400)),
+                              ),
+                            ],
+                          ),
+                        ),
+                        width: MediaQuery.sizeOf(context).width - 150,
+                        height: 54,
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                    0, 3), // changes position of shadow
+                              ),
+                            ],
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10)),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Product description',
-                      style: GoogleFonts.montserrat(
-                        textStyle: TextStyle(
-                          fontSize: 18,
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Product description',
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(
+                            fontSize: 18,
+                          ),
                         ),
                       ),
-                    ),
-                    Icon(Icons.arrow_forward_ios)
-                  ],
+                      Icon(Icons.arrow_forward_ios)
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Similar products',
-                      style: GoogleFonts.montserrat(
-                        textStyle: const TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    const Text(
-                      'See All',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
-                    ),
-                  ],
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 3,
-                    itemBuilder: (context, Index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 10, top: 10),
-                        child: CustomItem(
-                          name: prodect[Index][0],
-                          Price: prodect[Index][1],
-                          Image: prodect[Index][2],
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Similar products',
+                        style: GoogleFonts.montserrat(
+                          textStyle: const TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.w600),
                         ),
-                      );
-                    }),
-              )
-            ],
+                      ),
+                      const Text(
+                        'See All',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).height * .3,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 3,
+                      itemBuilder: (context, Index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 10, top: 10),
+                          child: CustomItem(
+                            name: prodect[Index][0],
+                            Price: prodect[Index][1],
+                            Image: prodect[Index][2],
+                          ),
+                        );
+                      }),
+                )
+              ],
+            ),
           ),
         ));
   }

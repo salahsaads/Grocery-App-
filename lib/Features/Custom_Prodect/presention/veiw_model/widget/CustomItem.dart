@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery/core/utils/constent.dart';
@@ -11,7 +10,7 @@ class CustomItem extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: 120,
+          width: 140,
           height: 150,
           decoration: BoxDecoration(
             boxShadow: [

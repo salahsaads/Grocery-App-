@@ -1,17 +1,20 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery/Features/Custom_Prodect/presention/view/Custom_Prodect.dart';
 import 'package:grocery/Features/Home/prestion/view/HomeScreen.dart';
 import 'package:grocery/Features/Login/presation/view/singin.dart';
 import 'package:grocery/Features/SingUp/presation/view/SingUp.dart';
-import 'package:grocery/Features/car/presetion/view/Car_Screen.dart';
-import 'package:grocery/Features/prodect_details/presation/view/prodect_details.dart';
-import 'package:grocery/Features/welcom/presation/view/welcome_screen.dart';
+
 
 import 'Features/Nav/prestion/view/Nav.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'package:device_preview/device_preview.dart';
+
+void main() => runApp(
+      DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => MyApp(), // Wrap your app
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

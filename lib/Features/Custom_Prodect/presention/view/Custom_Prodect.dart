@@ -31,108 +31,113 @@ class Custom_Prodect extends StatelessWidget {
             ],
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 80,
-              ),
-              const CustomTextfieldSearch(),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Text(
-                    ' All Featured',
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Colors.white,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 80,
+                ),
+                const CustomTextfieldSearch(),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      ' All Featured',
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-                  const Spacer(),
-                  Container(
-                    alignment: Alignment.center,
-                    width: 90,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          ' Sort ',
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
+                    const Spacer(),
+                    Container(
+                      alignment: Alignment.center,
+                      width: 90,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            ' Sort ',
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                        ),
-                        const Icon(Icons.swap_vert)
-                      ],
+                          const Icon(Icons.swap_vert)
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    width: 90,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                    const SizedBox(
+                      width: 20,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          ' Filter ',
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
+                    Container(
+                      alignment: Alignment.center,
+                      width: 90,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            ' Filter ',
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                        ),
-                        const Icon(Icons.filter_list_alt)
-                      ],
+                          const Icon(Icons.filter_list_alt)
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: GridView.builder(
-                  padding: const EdgeInsets.only(top: 5),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 10 / 13,
-                    crossAxisSpacing: 10,
-                    crossAxisCount: 3,
-                  ),
-                  itemCount: 100,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ProdectDetails()));
-                        },
-                        child: const CustomItem());
-                  },
+                  ],
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.only(top: 5),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 10 / 16,
+                      crossAxisSpacing: 10,
+                      crossAxisCount:
+                          (MediaQuery.of(context).size.width / 140).round(),
+                    ),
+                    itemCount: 100,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProdectDetails()));
+                          },
+                          child: const CustomItem());
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
