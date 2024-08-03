@@ -4,6 +4,8 @@ import 'package:grocery/Features/Home/prestion/view/HomeScreen.dart';
 import 'package:grocery/Features/car/presetion/view/Car_Screen.dart';
 import 'package:grocery/core/utils/constent.dart';
 
+import '../../../Setting/prestion/view/Setting_screen.dart';
+
 class Nav extends StatefulWidget {
   const Nav({super.key});
 
@@ -18,9 +20,7 @@ class _NavState extends State<Nav> {
     Scaffold(backgroundColor: Colors.orange),
     CarScreen(),
     Scaffold(),
-    Scaffold(
-      backgroundColor: Colors.red,
-    )
+    SettingScreen()
   ];
   @override
   Widget build(BuildContext context) {
