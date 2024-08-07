@@ -4,13 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery/Features/Home/prestion/view/widget/CustomAppBar.dart';
 import 'package:grocery/Features/Home/prestion/view/widget/CustomImage.dart';
 import 'package:grocery/core/utils/constent.dart';
+import 'package:grocery/core/utils/thema/AooColor.dart';
 import 'package:grocery/core/utils/widget/CustomTextfieldSearch.dart';
 
 import '../../../Custom_Prodect/presention/view/Custom_Prodect.dart';
 
-class Homescreen extends StatelessWidget {
+class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
 
+  @override
+  State<Homescreen> createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,19 +24,19 @@ class Homescreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xff71dcff),
-              Color.fromARGB(255, 126, 205, 229),
-              Color.fromARGB(255, 126, 205, 229),
+              color1!,
+              color2!,
+              color2!,
               Colors.white,
               Colors.white,
-              Color.fromARGB(255, 126, 205, 229),
-              Color.fromARGB(255, 126, 205, 229),
-              Color(0xff71dcff),
+              color2!,
+              color2!,
+              color1!,
             ],
           ),
         ),
@@ -60,11 +66,14 @@ class Homescreen extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        Text(
-                          ' See All',
-                          style: GoogleFonts.poppins(
-                            textStyle:
-                                const TextStyle(fontSize: 16, color: maincolor),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            ' See All',
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                  fontSize: 16, color: maincolor),
+                            ),
                           ),
                         ),
                       ],
