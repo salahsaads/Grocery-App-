@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery/Features/Login/presation/view/singin.dart';
+import 'package:grocery/Features/Singin/presation/view/singin.dart';
 import 'package:grocery/core/utils/constent.dart';
 import 'package:grocery/core/utils/widget/Custom_Button.dart';
 import 'package:lottie/lottie.dart';

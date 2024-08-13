@@ -1,19 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:grocery/core/EndpontApi/EndPointApi.dart';
-import '../presation/view_model/post_model.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert'; // لتحويل JSON إلى خريطة
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
+
+import '../../../core/EndpontApi/EndPointApi.dart'; // لتحويل JSON إلى خريطة
 
 class ApiSingUp {
-  Future<PostModel?> singUp(
+  Future<String> singUp(
       {required String email,
       required String username,
       required String phone,
       required String password,
       required String password2,
       required String address}) async {
-    String apiUrl =
-        Endpointapi.SingUpEndPoint;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String apiUrl = Endpointapi().SingUpEndPoint;
 
     Map<String, dynamic> datauser = {
       "Email": email,
@@ -30,20 +31,30 @@ class ApiSingUp {
     try {
       final response = await http.post(Uri.parse(apiUrl),
           body: jsonEncode(datauser), // تحويل البيانات إلى JSON
-          headers: {"Content-Type": "application/json"}); // تحديد نوع المحتوى
+          headers: <String, String>{
+            "Content-Type": "application/json; charset=UTF-8"
+          }); // تحديد نوع المحتوى
 
       if (response.statusCode == 200) {
         // إذا كانت الاستجابة ناجحة (رمز الحالة 200)
-        return PostModel.fromJson(jsonDecode(response.body));
+        print(
+            '============================================================salah');
+
+        var jsonResponse = json.decode(response.body);
+        var token = jsonResponse['token'];
+        await prefs.setString('token', token);
+        await prefs.setString('userid', jsonResponse['userID']);
+
+        return 'User SingUp';
       } else {
         // التعامل مع الاستجابة الفاشلة (رمز الحالة ليس 200)
         print('Failed to sign up: ${response.statusCode}');
-        return null;
+        return ('Failed to sign up: ${response.statusCode}');
       }
     } catch (e) {
       // التعامل مع الأخطاء أثناء الاتصال
       print('Error occurred: $e');
-      return null;
+      return ('Error occurred: $e');
     }
   }
 }

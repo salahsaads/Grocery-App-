@@ -3,14 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery/core/utils/constent.dart';
 
 class CustomTextFeild extends StatelessWidget {
-  const CustomTextFeild(
+   CustomTextFeild(
       {super.key,
       required this.Title,
+      required this.textEditingController,
       required this.icon,
       required this.password});
   final String Title;
   final IconData icon;
   final bool password;
+      TextEditingController textEditingController =TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,6 +29,7 @@ class CustomTextFeild extends StatelessWidget {
         ],
       ),
       child: TextField(
+        controller: textEditingController,
         obscureText: password,
         decoration: InputDecoration(
             hintText: Title,

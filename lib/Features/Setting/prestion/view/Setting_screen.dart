@@ -12,7 +12,6 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        
         resizeToAvoidBottomInset: false,
         body: Container(
           width: double.infinity,
@@ -33,50 +32,52 @@ class SettingScreen extends StatelessWidget {
               ],
             ),
           ),
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 50,
-              ),
-              App_theme(
-                Title: 'Application Theme',
-                doing: 'Dark Mood',
-                subtite:
-                    'Enable this setting if you’d like\nto continue to using app in dark mood',
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Divider(
-                  color: Color.fromARGB(255, 1, 88, 117),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 50,
                 ),
-              ),
-              App_theme(
-                Title: 'Application language',
-                doing: 'English',
-                subtite:
-                    'Enable this setting if you’d like\nto continue to using app in English',
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Divider(
-                  color: Color.fromARGB(255, 1, 88, 117),
+                App_theme(
+                  Title: 'Application Theme',
+                  doing: 'Dark Mood',
+                  subtite:
+                      'Enable this setting if you’d like\nto continue to using app in dark mood',
                 ),
-              ),
-              ChangePassword(),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Divider(
-                  color: Color.fromARGB(255, 1, 88, 117),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Divider(
+                    color: Color.fromARGB(255, 1, 88, 117),
+                  ),
                 ),
-              ),
-              Support(),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Divider(
-                  color: Color.fromARGB(255, 1, 88, 117),
+                App_theme(
+                  Title: 'Application language',
+                  doing: 'English',
+                  subtite:
+                      'Enable this setting if you’d like\nto continue to using app in English',
                 ),
-              ),
-            ],
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Divider(
+                    color: Color.fromARGB(255, 1, 88, 117),
+                  ),
+                ),
+                ChangePassword(),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Divider(
+                    color: Color.fromARGB(255, 1, 88, 117),
+                  ),
+                ),
+                Support(),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Divider(
+                    color: Color.fromARGB(255, 1, 88, 117),
+                  ),
+                ),
+              ],
+            ),
           ),
         ));
   }
@@ -150,7 +151,8 @@ class Support extends StatelessWidget {
 }
 
 class ChangePassword extends StatelessWidget {
-  const ChangePassword({super.key});
+  ChangePassword({super.key});
+  TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -173,7 +175,11 @@ class ChangePassword extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: CustomTextFeild(Title: '', icon: (Icons.lock), password: true),
+          child: CustomTextFeild(
+              textEditingController: password,
+              Title: '',
+              icon: (Icons.lock),
+              password: true),
         ),
         Container(
           alignment: Alignment.center,

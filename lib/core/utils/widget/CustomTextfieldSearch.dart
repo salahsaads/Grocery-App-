@@ -1,13 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery/core/utils/constent.dart';
 
 class CustomTextfieldSearch extends StatelessWidget {
-  const  CustomTextfieldSearch({
+   CustomTextfieldSearch({
     super.key,
+    required this.textEditingController
   });
-
+  TextEditingController textEditingController;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,10 +22,11 @@ class CustomTextfieldSearch extends StatelessWidget {
         ),
       ]),
       child: TextField(
+        controller: textEditingController,
         decoration: InputDecoration(
             hintText: 'Search any Product..',
             hintStyle: GoogleFonts.montserrat(
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 color: maincolor,
                 fontSize: 18,
               ),

@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery/core/utils/constent.dart';
 
 class CustomItem extends StatelessWidget {
-  const CustomItem({super.key});
-
+  const CustomItem({super.key, required this.data});
+  final dynamic data;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,15 +35,15 @@ class CustomItem extends StatelessWidget {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.contain,
-                          image: AssetImage('assets/Frame 427320667.png'))),
+                          image: NetworkImage(data['imgUrl']))),
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Tomato',
+                    data['name'],
                     style: GoogleFonts.montserrat(
                       textStyle: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 8,
                         color: Colors.black,
                       ),
                     ),
@@ -52,7 +52,7 @@ class CustomItem extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    '1 Kg',
+                    data['weight'],
                     style: GoogleFonts.montserrat(
                       textStyle: const TextStyle(
                         fontSize: 10,
@@ -66,7 +66,7 @@ class CustomItem extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        '₹49',
+                        '₹${data['price']}',
                         style: GoogleFonts.montserrat(
                           textStyle: const TextStyle(
                               fontSize: 12,

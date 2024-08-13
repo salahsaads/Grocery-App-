@@ -24,7 +24,7 @@ class CustomItem extends StatelessWidget {
               width: 120,
               height: 120,
               decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(Image)),
+                  image: DecorationImage(image: NetworkImage(Image)),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.2),

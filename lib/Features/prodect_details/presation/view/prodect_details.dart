@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grocery/Features/Custom_Prodect/data/similer.dart';
 import 'package:grocery/Features/prodect_details/presation/view/widget/customItem.dart';
 import 'package:grocery/core/utils/constent.dart';
 
 class ProdectDetails extends StatefulWidget {
-  ProdectDetails({super.key});
+  ProdectDetails({super.key, required this.onedata});
+  Map<String, dynamic> onedata = {};
 
   @override
   State<ProdectDetails> createState() => _ProdectDetailsState();
@@ -70,7 +72,7 @@ class _ProdectDetailsState extends State<ProdectDetails> {
                 Padding(
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: AnimatedContainer(
-                    child: Image.asset('assets/image 5.png'),
+                    child: Image.network(widget.onedata['imgUrl']),
                     width: double.infinity,
                     height: w,
                     decoration: const BoxDecoration(
@@ -93,7 +95,7 @@ class _ProdectDetailsState extends State<ProdectDetails> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'Biryani Masala 50g (Aachi)',
+                            widget.onedata['name'],
                             style: GoogleFonts.inter(
                                 textStyle: const TextStyle(
                                     fontSize: 17, fontWeight: FontWeight.w400)),
@@ -104,7 +106,7 @@ class _ProdectDetailsState extends State<ProdectDetails> {
                           Row(
                             children: [
                               Text(
-                                '₹19 / 50 g',
+                                '₹${widget.onedata['price']} / ${widget.onedata['weight']}',
                                 style: GoogleFonts.inter(
                                     textStyle: const TextStyle(
                                         fontSize: 17,
@@ -203,7 +205,7 @@ class _ProdectDetailsState extends State<ProdectDetails> {
                                 ),
                               ),
                               Text(
-                                '₹19',
+                                '₹${widget.onedata['price']}',
                                 style: GoogleFonts.inter(
                                     textStyle: const TextStyle(
                                         fontSize: 17,
@@ -277,19 +279,47 @@ class _ProdectDetailsState extends State<ProdectDetails> {
                 ),
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height * .3,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 3,
-                      itemBuilder: (context, Index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 10),
-                          child: CustomItem(
-                            name: prodect[Index][0],
-                            Price: prodect[Index][1],
-                            Image: prodect[Index][2],
-                          ),
+                  child: StreamBuilder(
+                    stream: getSimilarProducts(widget.onedata['id']),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
                         );
-                      }),
+                      } else if (snapshot.hasError) {
+                        return Center(
+                          child: Text('Error: ${snapshot.error}'),
+                        );
+                      } else if (!snapshot.hasData ||
+                          (snapshot.data as List).isEmpty) {
+                        return const Center(
+                          child: Text('No similar products found'),
+                        );
+                      } else {
+                        // Assuming the stream returns a List of products
+                        final List<dynamic> products =
+                            snapshot.data as List<dynamic>;
+
+                        return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: products.length,
+                          itemBuilder: (context, index) {
+                            // Assuming each product is a map or similar structure
+                            final product = products[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 10, top: 10),
+                              child: CustomItem(
+                                name: product[
+                                    'name'], // Adjust the key names based on your data structure
+                                Price: '${product['price']}',
+                                Image: product['imgUrl'],
+                              ),
+                            );
+                          },
+                        );
+                      }
+                    },
+                  ),
                 )
               ],
             ),

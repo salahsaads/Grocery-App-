@@ -1,12 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:grocery/core/utils/constent.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
-    super.key,
-  });
-
+  const CustomAppBar({super.key, required this.onTap});
+  final Function onTap;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,19 +16,21 @@ class CustomAppBar extends StatelessWidget {
               color: Colors.black.withOpacity(0.2),
               spreadRadius: 2,
               blurRadius: 5,
-              offset:
-                  const Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
           borderRadius: BorderRadius.circular(5)),
-      child:const  Padding(
+      child: Padding(
         padding: EdgeInsets.only(left: 10, right: 10),
         child: Row(
           children: [
-            Icon(
-              Icons.menu,
-              size: 35,
-              color: maincolor,
+            GestureDetector(
+              onTap: onTap(),
+              child: Icon(
+                Icons.menu,
+                size: 35,
+                color: maincolor,
+              ),
             ),
             Spacer(),
             Icon(Icons.add_shopping_cart),

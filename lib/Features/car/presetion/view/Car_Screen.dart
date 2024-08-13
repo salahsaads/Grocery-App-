@@ -59,10 +59,10 @@ class _CarScreenState extends State<CarScreen> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Custom_Prodect()));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => Custom_Prodect()));
                           },
                           child: Item());
                     }),
